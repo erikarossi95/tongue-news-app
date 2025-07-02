@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tongue - Le Ultime News Tech</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Favicon  -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="img/site.webmanifest"> 
+    <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5"> 
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c"> 
+    <meta name="theme-color" content="#ffffff"> 
+    
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="app-title">
+                <img src="img/logo.png" alt="Logo Tongue" class="app-logo">
+            </h1>
+            <p class="app-description">Le pillole di attualità che stavi aspettando!</p>
+        </header>
+
+        <!-- Sezione per la visualizzazione delle notizie -->
+        <main class="main-content">
+            <h2 class="section-title">Ultime News</h2>
+
+            <!-- Sezione per Ricerca e Ordinamento -->
+            <div class="controls-container">
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Cerca notizie per titolo..." class="search-input">
+                    <button id="search-button" class="search-button">Cerca</button>
+                </div>
+                <div class="sort-options">
+                    <label for="sort-select" class="sort-label">Ordina per:</label>
+                    <select id="sort-select" class="sort-select">
+                        <option value="latest">Più Recenti</option>
+                        <option value="score">Punteggio</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Area caricamento notizie -->
+            <div id="news-container" class="news-grid">
+            </div>
+
+            <!-- Indicatore di caricamento -->
+            <div id="loading-indicator" class="loading-indicator hidden">
+                Caricamento notizie...
+            </div>
+
+            <!-- Pulsante "Carica altro" -->
+            <button id="load-more-btn" class="load-more-button hidden">Carica altro</button>
+
+            <!-- Sezione per i messaggi di errore -->
+            <div id="error-message" class="error-message hidden">
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 Tongue. Tutti i diritti riservati.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
