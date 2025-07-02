@@ -3,7 +3,7 @@ Tongue - Aggregatore di Notizie Tech
 Un aggregatore di notizie web moderno e reattivo, sviluppato come progetto di Master, che ti tiene aggiornato sulle ultime novità dal mondo della tecnologia, attingendo direttamente da Hacker News. È stato concepito per soddisfare i requisiti di una consegna per il Master, dimostrando una solida comprensione delle fondamenta dello sviluppo web front-end e l'implementazione di funzionalità avanzate.
 
 🚀 Demo Live
-Link alla Demo Live su Netlify <!--  LINK  -->
+Link alla Demo Live su Netlify (https://tongue-news-app.netlify.app/)
 
 📸 Screenshot dell'Applicazione
 ![Screenshot dell'applicazione Tongue - Interfaccia Principale](screenshots/screenshot-tongue-main.png)
