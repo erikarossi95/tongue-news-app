@@ -1,4 +1,6 @@
 
+import '../css/style.css';
+
 import { fetchNewStoriesIds, fetchNewsItem, getFaviconUrl } from './api.js';
 import { displayNewsItem, toggleLoading, toggleLoadMoreButton, displayErrorMessage, clearNews } from './ui.js';
 import { debounce } from './utils.js';
