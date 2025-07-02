@@ -1,70 +1,71 @@
 
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin'); 
 
 module.exports = {
-  mode: process.env.NODE_ENV || 'development',
+  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
 
+  // Punto di ingresso dell'applicazione.
   entry: './public/js/app.js',
 
+  // Configurazione dell'output dei file compilati.
   output: {
-    filename: 'bundle.[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
-    clean: true,
+    filename: 'bundle.js',
     publicPath: '/',
+    clean: true,
   },
 
-  // Moduli (loaders) per gestire i diversi tipi di file.
+  // Regole per la gestione dei diversi tipi di moduli.
   module: {
     rules: [
       {
+        // Regola per i file JavaScript.
         test: /\.js$/,
         exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
+      },
+      {
+        // Regola per i file CSS.
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        // Regola per i file immagine.
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'img/[name][ext]',
+        },
       },
     ],
   },
 
-  // Plugin per estendere le funzionalità di Webpack.
+  // Plugin utilizzati da Webpack.
   plugins: [
-    new CleanWebpackPlugin(),
-    new Dotenv({
-      path: './.env', 
-      systemvars: true, 
-    }),
-
     new HtmlWebpackPlugin({
-      template: './public/index.html', 
-      filename: 'index.html', 
-      inject: 'body', 
+      template: './public/index.html',
+      filename: 'index.html',
+      inject: 'body',
     }),
-
-    new CopyWebpackPlugin({
-      patterns: [
-        { from: 'public/css', to: 'css' },
-        {
-          from: 'public/img/**/*',
-          to: 'img/[name][ext]',
-          noErrorOnMissing: true,
-          globOptions: {
-            dot: true,
-          },
-        },
-      ],
-    }),
+    new Dotenv(),
   ],
 
-  // Opzioni del server di sviluppo.
+  // Configurazione del server di sviluppo.
   devServer: {
     static: {
-      directory: path.join(__dirname, 'dist'),
+      directory: path.join(__dirname, 'public'),
     },
     compress: true,
     port: 8080,
     open: true,
+    hot: true,
     historyApiFallback: true,
   },
 };
-
